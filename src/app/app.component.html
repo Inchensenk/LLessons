@@ -40,7 +40,7 @@
           <h3 class="product__title">{{product.title}}</h3>
           <div class="product__body">
             <div class="product__image-wrapper">
-              <img class="product__image" src="{{product.img}}" alt="{{product.imgAlt}}" />
+              <img class="product__image" [src]="product.img" [alt]="product.imgAlt" />
             </div>
             <span class="product__price">{{product.price}}</span>
           </div>
