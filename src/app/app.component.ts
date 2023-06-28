@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './interfaces/product.interface';
+import { CartProduct } from './interfaces/cart-product.interface';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,8 @@ export class AppComponent implements OnInit{
 
 
 public products: Product[] = [];
+public cartProducts: CartProduct[] = [];
+public cart: CartProduct[] = [];
 
 public loading: boolean = false;
 
@@ -106,11 +109,34 @@ public loadProducts(): void{
         "imgAlt": "Xiaomi Mi TV Stick 4K HDR Global"
       }
     ];
+
+    this.cartProducts = this.products.map((p) =>{
+
+      //... - spread оператор (вызовит полнуб копию объекта Product)
+      return{
+        ...p,
+        quantity: 1
+      }//получили обьекты с бэкенда и трансформировали(добавили свойство quantity, которое по умолчанию = 1)
+
+    });
+
     this.loading=false;
   }, 4000);
+}
 
+//обработка добавления или удаления товара из корзины
+public toggle(product: CartProduct): void{
+  const checkProductIndex = this.cart.findIndex((p) =>{
+    return p.id === product.id;
+  });
 
-
+  //если товар который мы добавляем не равен -1
+  if(checkProductIndex !== -1){
+    this.cart.splice(checkProductIndex, 1);//тогда удаляем одну позицию начиная с этого индекса, у нашей корзины
+  }else{
+    this.cart.push(product);
+  }
+  console.log(this.cart);
 }
 
  }

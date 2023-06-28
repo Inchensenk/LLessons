@@ -1,0 +1,14 @@
+<div class="product">
+  <h3 class="product__title">{{product.title}}</h3>
+  <div class="product__body">
+    <div class="product__image-wrapper">
+      <img class="product__image" [src]="product.img" [alt]="product.imgAlt" />
+    </div>
+    <span class="product__price">{{product.price | currency:"₽"}}</span>
+  </div>
+  <div class="product__actions">
+    <button  class="btn" (click)="onAdded()">Add to cart </button>
+    <!-- [(ngModel)](двустороннее связывание) это деректива которая позволяет работать с формами, такой подход называется template driven form-->
+    <input  class="quantity" [(ngModel)]="product.quantity" />
+  </div>
+</div>

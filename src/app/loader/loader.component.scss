@@ -1,0 +1,30 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__spinner {
+    animation: rotate linear 3s infinite;
+  }
+
+  &--enabled {
+    display: flex;
+  }
+
+  &--disabled {
+    display: none;
+  }
+
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
