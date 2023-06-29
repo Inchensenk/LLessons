@@ -1,0 +1,36 @@
+<div class="product">
+  <h3 class="product__title">{{ product.title }}</h3>
+  <div class="product__body">
+    <div class="product__image-wrapper">
+      <img class="product__image" [src]="product.img" [alt]="product.imgAlt" />
+    </div>
+    <span class="product__price">{{ product.price | currency : '₽' }}</span>
+  </div>
+  <div class="product__actions">
+    <!-- [class.btn--primary]="product.added" - добавление css класса в зависимости от условий(при добавлении товара в корзину, кнопка меняет цвет) -->
+    <button
+      class="btn"
+      [class.btn--primary]="product.added"
+      [class.btn--disabled]="quantityInValid"
+      [disabled]="quantityInValid"
+      (click)="onAdded()"
+    >
+      Add to cart
+    </button>
+
+    <!-- [(ngModel)](двустороннее связывание) это деректива которая позволяет работать с формами, такой подход называется template driven form-->
+    <!-- (ngModelChange)="" - при изменении модели вставляется какая-либо логика
+    Когда меняется значение в input мы на это реагируем и навешиваем функцию onQuantityChanged()
+   $event - зарезервированное Angular слово -  в данном случее получаем новое конкретное значение поступившее в input-->
+
+    <!-- [(ngModel)]="product.quantity" -->
+
+    <!-- [ngModel]="product.quantity" Связывание некой модели, которая привязалась к элементу input, 
+      модель получила данные из product.quantity и повлияла на значение находящееся в DOM-дереве-->
+    <input
+      class="quantity"
+      [ngModel]="product.quantity"
+      (ngModelChange)="onQuantityChanged($event)"
+    />
+  </div>
+</div>
