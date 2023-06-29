@@ -133,8 +133,10 @@ public toggle(product: CartProduct): void{
   //если товар который мы добавляем не равен -1
   if(checkProductIndex !== -1){
     this.cart.splice(checkProductIndex, 1);//тогда удаляем одну позицию начиная с этого индекса, у нашей корзины
+    product.added = false;
   }else{
     this.cart.push(product);
+    product.added = true;//флаг для окрашивания кнопки "Add to cart" при добавлении товара в корзину
   }
   console.log(this.cart);
 }
