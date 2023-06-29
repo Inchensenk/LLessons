@@ -6,32 +6,21 @@
   Click me!
 </button> -->
 
+<div class="container application">
+  <app-cart [cart]="cart"></app-cart>
 
+  <ng-container *ngIf="loading">
+    <app-loader></app-loader>
+  </ng-container>
 
-    <div class="container application">
-      <app-cart [cart]="cart"></app-cart>
-
-
-
-      <ng-container *ngIf="loading">
-       <app-loader></app-loader>
-      </ng-container>
-
-
-
-
-      <div class="products router">
-        <!-- *ngFor (структурная деректива, в большинстве случаем должна быть в ng-container) в цикле перебираем продукты-->
-        <!-- ng-container (не встраивается как DOM элемент, работает только на этапе компиляции шаблона)- секция которая будет рендериться несколько раз 
+  <div class="products router">
+    <!-- *ngFor (структурная деректива, в большинстве случаем должна быть в ng-container) в цикле перебираем продукты-->
+    <!-- ng-container (не встраивается как DOM элемент, работает только на этапе компиляции шаблона)- секция которая будет рендериться несколько раз 
         Структурные дерективы рекомендуется помещать внутри ng-container-->
-        <ng-container *ngFor="let product of cartProducts">
-          <!--[product]="product" - в качестве входного параметра передаем то что итерируем(Передача Input параметра)-->
-          <!-- $event - зарезервированная Angular переменная которая в зависимости от контекста будет зависеть от того кому event принадлежит -->
-          <app-product  [product]="product" (added)="toggle($event)"></app-product>
-        </ng-container>
-
-
-      </div>
-
-    </div>
-
+    <ng-container *ngFor="let product of cartProducts">
+      <!--[product]="product" - в качестве входного параметра передаем то что итерируем(Передача Input параметра)-->
+      <!-- $event - зарезервированная Angular переменная которая в зависимости от контекста будет зависеть от того кому event принадлежит -->
+      <app-product [product]="product" (added)="toggle($event)"></app-product>
+    </ng-container>
+  </div>
+</div>
