@@ -15,6 +15,7 @@ export class CartComponent {
     const total = this.cart.reduce((acc, current) => {
       return acc + Number(current.price) * Number(current.quantity);
     }, 0);
+
     return total.toString();
   }
 }

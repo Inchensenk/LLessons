@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "safe:install": "npm ci",
-    "format": "npx prettier --write ./src"
+    "format": "npx prettier --write ./src/"
   },
   "private": true,
   "dependencies": {
