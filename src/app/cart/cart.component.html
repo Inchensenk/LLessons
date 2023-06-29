@@ -1,17 +1,10 @@
 <div class="cart">
   <div class="cart__title">
     Cart
-    <!-- Плохая практика (вызов функции в шаблонах) чем сложнее функция тем больше падает производительность рендеринга страницы-->
-    <!-- Использовать альтернативы! кпримеру pipe -->
     <div>
-      Price: <span class="cart__price">{{ getTotalPrice() }}</span
-      >₽
+      Price: <span class="cart__price">{{ total | number : '.2-2' }}</span
+      >$
     </div>
   </div>
   <div class="cart__total">{{ cart.length }}</div>
-
-  <!-- | json  - pipe(призван трансформировать выражение, которое находится слева, в какой-то формат )-->
-  <!-- <div>
-        <pre>{{cart | json}}</pre>
-  </div>  -->
 </div>

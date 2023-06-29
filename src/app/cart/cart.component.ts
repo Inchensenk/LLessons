@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartProduct } from '../interfaces/cart-product.interface';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,12 +11,6 @@ export class CartComponent {
   @Input()
   public cart: CartProduct[] = [];
 
-  //Плохая практика
-  public getTotalPrice(): string {
-    const total = this.cart.reduce((acc, current) => {
-      return acc + Number(current.price) * Number(current.quantity);
-    }, 0);
-
-    return total.toString();
-  }
+  @Input()
+  public total!: number;
 }
