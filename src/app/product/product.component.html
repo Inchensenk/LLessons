@@ -1,0 +1,28 @@
+<div class="product">
+  <h3 class="product__title">{{ product.title }}</h3>
+  <div class="product__body">
+    <div class="product__image-wrapper">
+      <img class="product__image" [src]="product.img" [alt]="product.imgAlt" />
+    </div>
+    <span class="product__price">{{ product.price | currency: '₽'}}</span>
+  </div>
+  <div class="product__actions">
+    <button
+      class="btn"
+      [class.btn--primary]="product.added"
+      [class.btn--disabled]="quantityInvalid"
+      [disabled]="quantityInvalid"
+      (click)="onAdded()"
+    >
+      Add to cart
+    </button>
+
+    <!-- [(ngModel)]="product.quantity" -->
+
+    <input
+      class="quantity"
+      [ngModel]="product.quantity"
+      (ngModelChange)="onQuantityChanged($event)"
+    />
+  </div>
+</div>
