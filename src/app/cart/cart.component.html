@@ -2,8 +2,8 @@
   <div class="cart__title">
     Cart
     <div>
-      Price: <span class="cart__price">{{ total | number : '.2-2' }}</span
-      >$
+      Price: <span class="cart__price">{{ total | number : '.2-2' | currency: '₽'}} </span
+      >
     </div>
   </div>
   <div class="cart__total">{{ cart.length }}</div>
